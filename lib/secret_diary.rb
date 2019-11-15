@@ -1,6 +1,15 @@
 class SecretDiary
-  def add_entry
-    "Diary is locked"
+
+  def initialize
+    @locked = true
+  end
+
+  def add_entry(text)
+    if @locked == true
+      "Diary is locked"
+    else
+      text
+    end
   end
 
   def get_entries
@@ -8,6 +17,7 @@ class SecretDiary
   end
 
   def unlock
+    @locked = false
     "Diary has been unlocked"
   end
 end
