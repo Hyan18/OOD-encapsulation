@@ -18,7 +18,12 @@ describe SecretDiary do
       secret_diary = SecretDiary.new
       expect(secret_diary.get_entries).to eq("Diary is locked")
     end
-
+    it "should display entries when the diary is unlocked" do
+      secret_diary = SecretDiary.new
+      secret_diary.unlock
+      secret_diary.add_entry("first entry")
+      expect(secret_diary.get_entries).to eq("first entry")
+    end
   end
 
   describe '#unlock' do
