@@ -11,6 +11,12 @@ describe SecretDiary do
       secret_diary.unlock
       expect(secret_diary.add_entry("text")).to eq(["text"])
     end
+    it "should throw an error when the diary is unlocked then locked again" do
+      secret_diary = SecretDiary.new
+      secret_diary.unlock
+      secret_diary.lock
+      expect(secret_diary.add_entry("text")).to eq("Diary is locked")
+    end
   end
 
   describe '#get_entries' do
