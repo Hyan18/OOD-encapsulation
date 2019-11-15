@@ -1,9 +1,13 @@
 class SecretDiary
   def add_entry
-    return "Diary is locked"
+    "Diary is locked"
   end
 
   def get_entries
-    return "Diary is locked"
+    "Diary is locked"
+  end
+
+  def unlock
+    "Diary has been unlocked"
   end
 end
