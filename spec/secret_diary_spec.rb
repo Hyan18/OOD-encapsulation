@@ -9,7 +9,7 @@ describe SecretDiary do
     it "should add an entry whilst the diary is unlocked" do
       secret_diary = SecretDiary.new
       secret_diary.unlock
-      expect(secret_diary.add_entry("text")).to eq("text")
+      expect(secret_diary.add_entry("text")).to eq(["text"])
     end
   end
 
@@ -18,11 +18,18 @@ describe SecretDiary do
       secret_diary = SecretDiary.new
       expect(secret_diary.get_entries).to eq("Diary is locked")
     end
-    it "should display entries when the diary is unlocked" do
+    it "should display an entry when the diary is unlocked" do
       secret_diary = SecretDiary.new
       secret_diary.unlock
       secret_diary.add_entry("first entry")
-      expect(secret_diary.get_entries).to eq("first entry")
+      expect{secret_diary.get_entries}.to output("first entry\n").to_stdout
+    end
+    it "should display multiple entries on new lines when the diary is unlocked" do
+      secret_diary = SecretDiary.new
+      secret_diary.unlock
+      secret_diary.add_entry("first entry")
+      secret_diary.add_entry("second entry")
+      expect{secret_diary.get_entries}.to output("first entry\nsecond entry\n").to_stdout
     end
   end
 

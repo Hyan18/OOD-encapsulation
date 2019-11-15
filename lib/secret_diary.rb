@@ -2,13 +2,14 @@ class SecretDiary
 
   def initialize
     @locked = true
+    @entries = []
   end
 
   def add_entry(text)
     if @locked
       "Diary is locked"
     else
-      text
+      @entries.push(text)
     end
   end
 
@@ -16,7 +17,9 @@ class SecretDiary
     if @locked
       "Diary is locked"
     else
-      "first entry"
+      @entries.each { |entry|
+        puts entry
+      }
     end
   end
 
