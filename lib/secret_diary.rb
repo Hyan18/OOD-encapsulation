@@ -27,4 +27,9 @@ class SecretDiary
     @locked = false
     "Diary has been unlocked"
   end
+
+  def lock
+    @locked = true
+    "Diary has been locked"
+  end
 end

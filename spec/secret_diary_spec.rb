@@ -39,4 +39,11 @@ describe SecretDiary do
       expect(secret_diary.unlock).to eq("Diary has been unlocked")
     end
   end
+
+  describe '#lock' do
+    it "should lock the diary" do
+      secret_diary = SecretDiary.new
+      expect(secret_diary.lock).to eq("Diary has been locked")
+    end
+  end
 end
